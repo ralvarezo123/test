@@ -1,0 +1,21 @@
+extends ../layout
+
+block content
+  h1 Productos
+
+  a(href="/api/v1/products/new") Nuevo
+  table
+    tr
+      th Descripción
+      th Imagen
+      th Acciones
+    each producto in productos
+      tr
+        td= producto.descripcion
+        td
+          img(src=producto.picture width="100px")
+        td
+          a(href="/api/v1/products/"+ producto.id) Editar
+          form(method="POST" action="/api/v1/products/"+ producto.id + "?_method=DELETE")
+            button Eliminar
+
